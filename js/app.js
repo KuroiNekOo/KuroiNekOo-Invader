@@ -52,9 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 event.target.classList[1],
                 app.color
               );
-            } else if (event.target.classList[1] === app.color) {
-              event.target.classList.remove(app.color);
-            } else {
+            } else if (!event.target.classList[1]) {
               event.target.classList.add(app.color);
             }
           }
