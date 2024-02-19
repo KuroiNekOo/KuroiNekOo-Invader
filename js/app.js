@@ -10,27 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     generateForm: function () {
       const formHTML = document.querySelector(".configuration");
-      let html = `        <div>
-      <label id="inputGrid" for="inputGrid"
-        >Taille de la grille (de 3 à 15) : <span id="gridDefault">??</span>
-      </label>
-      <input
-        type="range"
-        id="inputGrid"
-        name="inputGrid"
-        min="3"
-        max="15"
-        step="1"
-      />
-    </div>
-
-    <div>
-      <label id="inputPixels" for="inputPixels"
-        >Taille en pixel (de 20px à 60px) :
-        <span id="pixelDefault">??</span></label
-      >
-      <input type="range" id="inputPixels" min="20" max="60" step="2" />
-    </div>`;
+      let html = `<div><label id="inputGrid" for="inputGrid">Taille de la grille (de 3 à 15) : <span id="gridDefault">??</span></label><input type="range"id="inputGrid"name="inputGrid"min="3"max="15"step="1"/></div><div><label id="inputPixels" for="inputPixels">Taille en pixel (de 20px à 60px) :<span id="pixelDefault">??</span></label><input type="range" id="inputPixels" min="20" max="60" step="2" /></div>`;
       formHTML.innerHTML = html;
     },
 
