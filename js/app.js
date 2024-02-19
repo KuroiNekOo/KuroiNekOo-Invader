@@ -35,8 +35,31 @@ document.addEventListener("DOMContentLoaded", function () {
     },
 
     getPixels: function () {
+      let isMouseDown = false;
+
+      document.addEventListener("mousedown", () => (isMouseDown = true));
+      document.addEventListener("mouseup", () => (isMouseDown = false));
+
       this.pixels = document.querySelectorAll(".pixel");
       this.pixels.forEach((element) => {
+        element.addEventListener("mouseover", function (event) {
+          if (isMouseDown) {
+            if (
+              event.target.classList[1] &&
+              event.target.classList[1] !== app.color
+            ) {
+              event.target.classList.replace(
+                event.target.classList[1],
+                app.color
+              );
+            } else if (event.target.classList[1] === app.color) {
+              event.target.classList.remove(app.color);
+            } else {
+              event.target.classList.add(app.color);
+            }
+          }
+        });
+
         element.addEventListener("click", function (event) {
           if (
             event.target.classList[1] &&
