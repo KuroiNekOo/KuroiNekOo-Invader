@@ -62,9 +62,11 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     },
 
-    removeSelected: function () {
+    removeSelected: function (target) {
       this.colorCircles.forEach((element) => {
-        element.classList.remove("selected");
+        if (element != target) {
+          element.classList.remove("selected");
+        }
       });
     },
 
@@ -218,7 +220,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       this.colorCircles.forEach((element) => {
         element.addEventListener("click", function (event) {
-          app.removeSelected();
+          app.removeSelected(event.target);
           event.target.classList.toggle("selected");
           app.color = event.target.classList[1];
         });
