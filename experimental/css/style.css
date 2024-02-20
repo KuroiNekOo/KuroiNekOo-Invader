@@ -4,6 +4,7 @@
 
 body {
   background-color: #45cac4;
+  overflow: hidden;
 }
 
 /* ================== */
@@ -207,6 +208,12 @@ footer {
   right: 0;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 10px 0 0 0;
+  transform: translateX(460px);
+  transition: transform 200ms linear;
+}
+
+.footer-full {
+  transform: translateX(0);
 }
 
 button {
@@ -230,6 +237,10 @@ footer div {
   transition: all 0.3s ease-in-out;
 }
 
+footer .slider {
+  border-right: solid 1px rgba(0, 0, 0, 0.2);
+}
+
 .gomme-selected {
   border: solid 1px #000;
   transform: scale(1.3);
@@ -251,28 +262,14 @@ footer div {
   border: solid 1px rgb(0, 0, 0);
 }
 
-.greyColor {
+.colorCircle {
   background-color: rgb(207, 207, 207);
-  border: solid 1px rgb(164, 164, 164);
+  border: solid 3px rgb(164, 164, 164);
+  border-radius: 50%;
 }
 
-.blackColor {
-  background-color: rgb(50, 50, 50);
-  border: solid 1px rgb(0, 0, 0);
-}
-
-.yellowColor {
-  background-color: rgb(200, 200, 0);
-  border: solid 1px rgb(250, 200, 50);
-}
-
-.greenColor {
-  background-color: rgb(150, 250, 115);
-  border: solid 1px rgb(117, 196, 88);
-}
-
-.selected {
-  transform: scale(1.2);
+.circle-selected {
+  transform: scale(1.3);
 }
 
 /* ================== */

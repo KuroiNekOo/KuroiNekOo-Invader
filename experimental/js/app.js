@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
   const app = {
     styles: ["plain", "empty", "light", "highlight"],
-    // colorCircles: document.querySelectorAll(".colorCircle"),
+    colorCircles: document.querySelectorAll(".colorCircle"),
     invader: document.querySelector("#invader"),
+    footer: document.querySelector("footer"),
     form: document.querySelector(".configuration"),
     resetButton: document.querySelector("#resetButton"),
     invaderChild: invader.querySelectorAll(".face"),
@@ -10,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     rotates: document.querySelectorAll(".rotate"),
     colorPicker: document.querySelector(".color-picker"),
     gum: document.querySelector(".gomme"),
+    slider: document.querySelector(".slider"),
     positionX: 0,
     positionY: 0,
     rotate: 0,
@@ -56,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
     removeSelected: function (target) {
       this.colorCircles.forEach((element) => {
         if (element != target) {
-          element.classList.remove("selected");
+          element.classList.remove("circle-selected");
         }
       });
     },
@@ -102,7 +104,6 @@ document.addEventListener("DOMContentLoaded", function () {
       this.generateForm();
 
       this.colorPicker.addEventListener("input", function (event) {
-        console.log(event.target.value);
         app.color = event.target.value;
       });
 
@@ -226,13 +227,25 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
 
-      // this.colorCircles.forEach((element) => {
-      //   element.addEventListener("click", function (event) {
-      //     app.removeSelected(event.target);
-      //     event.target.classList.toggle("selected");
-      //     app.color = event.target.classList[1];
-      //   });
-      // });
+      this.slider.addEventListener("click", function (event) {
+        app.footer.classList.toggle("footer-full");
+      });
+
+      this.colorCircles.forEach((element) => {
+        element.addEventListener("click", function (event) {
+          const elem = event.target;
+          app.removeSelected(event.target);
+          elem.classList.toggle("circle-selected");
+          if (elem.classList[1] === "color-add") {
+            app.color = elem.style.backgroundColor;
+          } else {
+            elem.style.backgroundColor = `${app.color}`;
+          }
+          if (app.color) {
+            elem.classList.add("color-add");
+          }
+        });
+      });
     },
   };
 
