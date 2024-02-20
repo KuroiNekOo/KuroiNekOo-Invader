@@ -1,13 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
   const app = {
     styles: ["plain", "empty", "light", "highlight"],
-    colorCircles: document.querySelectorAll(".colorCircle"),
+    // colorCircles: document.querySelectorAll(".colorCircle"),
     invader: document.querySelector("#invader"),
     form: document.querySelector(".configuration"),
     resetButton: document.querySelector("#resetButton"),
     invaderChild: invader.querySelectorAll(".face"),
     arrows: document.querySelectorAll(".arrow"),
     rotates: document.querySelectorAll(".rotate"),
+    colorPicker: document.querySelector(".color-picker"),
+    gum: document.querySelector(".gomme"),
     positionX: 0,
     positionY: 0,
     rotate: 0,
@@ -30,33 +32,21 @@ document.addEventListener("DOMContentLoaded", function () {
       this.pixels.forEach((element) => {
         element.addEventListener("mouseover", function (event) {
           if (isMouseDown) {
-            if (
-              event.target.classList[1] &&
-              event.target.classList[1] !== app.color
-            ) {
-              event.target.classList.replace(
-                event.target.classList[1],
-                app.color
-              );
-            } else if (!event.target.classList[1]) {
-              event.target.classList.add(app.color);
+            const elem = event.target.style;
+            if (elem.backgroundColor === "") {
+              elem.backgroundColor = `${app.color}`;
+            } else if (elem.backgroundColor) {
+              elem.backgroundColor = `${app.color}`;
             }
           }
         });
 
         element.addEventListener("click", function (event) {
-          if (
-            event.target.classList[1] &&
-            event.target.classList[1] !== app.color
-          ) {
-            event.target.classList.replace(
-              event.target.classList[1],
-              app.color
-            );
-          } else if (event.target.classList[1] === app.color) {
-            event.target.classList.remove(app.color);
-          } else {
-            event.target.classList.add(app.color);
+          const elem = event.target.style;
+          if (event.target.style.backgroundColor === "") {
+            event.target.style.backgroundColor = `${app.color}`;
+          } else if (elem.backgroundColor) {
+            elem.backgroundColor = `${app.color}`;
           }
         });
       });
@@ -73,8 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
     resetColors: function () {
       this.pixels = document.querySelectorAll(".pixel");
       this.pixels.forEach((element) => {
-        const pixelColor = element.classList[1];
-        element.classList.remove(pixelColor);
+        element.style.backgroundColor = null;
+        element.style.border = null;
       });
     },
 
@@ -109,6 +99,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     init: function () {
       this.generateForm();
+
+      this.colorPicker.addEventListener("input", function (event) {
+        console.log(event.target.value);
+        app.color = event.target.value;
+      });
 
       this.rotates.forEach((element) => {
         element.addEventListener("click", function () {
@@ -218,13 +213,18 @@ document.addEventListener("DOMContentLoaded", function () {
 
       this.resetButton.addEventListener("click", this.resetColors);
 
-      this.colorCircles.forEach((element) => {
-        element.addEventListener("click", function (event) {
-          app.removeSelected(event.target);
-          event.target.classList.toggle("selected");
-          app.color = event.target.classList[1];
-        });
+      this.gum.addEventListener("click", function (event) {
+        event.target.classList.toggle("gomme-selected");
+        app.color = "#cfcfcf";
       });
+
+      // this.colorCircles.forEach((element) => {
+      //   element.addEventListener("click", function (event) {
+      //     app.removeSelected(event.target);
+      //     event.target.classList.toggle("selected");
+      //     app.color = event.target.classList[1];
+      //   });
+      // });
     },
   };
 
