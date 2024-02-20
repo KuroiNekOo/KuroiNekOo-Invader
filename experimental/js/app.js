@@ -84,9 +84,9 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector(".left-arrow").style.display = "none";
             document.querySelector(".right-arrow").style.display = "none";
           } else {
-            document.querySelector(".down-arrow").style.display = "";
-            document.querySelector(".left-arrow").style.display = "";
-            document.querySelector(".right-arrow").style.display = "";
+            document.querySelector(".down-arrow").style.display = null;
+            document.querySelector(".left-arrow").style.display = null;
+            document.querySelector(".right-arrow").style.display = null;
           }
           break;
         case "down-arrow":
@@ -95,9 +95,9 @@ document.addEventListener("DOMContentLoaded", function () {
             document.querySelector(".left-arrow").style.display = "none";
             document.querySelector(".right-arrow").style.display = "none";
           } else {
-            document.querySelector(".up-arrow").style.display = "";
-            document.querySelector(".left-arrow").style.display = "";
-            document.querySelector(".right-arrow").style.display = "";
+            document.querySelector(".up-arrow").style.display = null;
+            document.querySelector(".left-arrow").style.display = null;
+            document.querySelector(".right-arrow").style.display = null;
           }
           break;
         default:
@@ -108,21 +108,22 @@ document.addEventListener("DOMContentLoaded", function () {
     init: function () {
       this.generateForm();
 
-      // this.rotates.forEach((element) => {
-      //   element.addEventListener("click", function () {
-      //     switch (element.classList[1]) {
-      //       case "rotate-right":
-      //         app.rotate += 90;
-      //         break;
-      //       case "rotate-left":
-      //         app.rotate -= 90;
-      //         break;
-      //       default:
-      //         break;
-      //     }
-      //     app.invader.style.transform = `rotate(${app.rotate}) rotateX(${app.positionX}deg) rotateY(${app.positionY}deg)`;
-      //   });
-      // });
+      this.rotates.forEach((element) => {
+        element.addEventListener("click", function () {
+          switch (element.classList[1]) {
+            case "right-rotate":
+              app.rotate += 90;
+              break;
+            case "left-rotate":
+              app.rotate -= 90;
+              break;
+            default:
+              break;
+          }
+          console.log(app.rotate);
+          app.invader.style.transform = `rotate(${app.rotate}deg) rotateX(${app.positionX}deg) rotateY(${app.positionY}deg)`;
+        });
+      });
 
       this.arrows.forEach((element) => {
         element.addEventListener("click", function () {
@@ -144,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
             default:
               break;
           }
-          app.invader.style.transform = `rotate(${app.rotate}) rotateX(${app.positionX}deg) rotateY(${app.positionY}deg)`;
+          app.invader.style.transform = `rotate(${app.rotate}deg) rotateX(${app.positionX}deg) rotateY(${app.positionY}deg)`;
         });
       });
 

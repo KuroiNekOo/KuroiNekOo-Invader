@@ -131,12 +131,12 @@ main figure.rotate {
   cursor: pointer;
 }
 
-.rotate-left {
+.left-rotate {
   transform: scaleX(-1) translateX(50px) translateY(-220px);
   right: 5%;
 }
 
-.rotate-right {
+.right-rotate {
   transform: translateX(-50px) translateY(-130px);
   right: 5%;
 }
