@@ -216,6 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
       this.gum.addEventListener("click", function (event) {
         event.target.classList.toggle("gomme-selected");
         app.color = "#cfcfcf";
+        colorPicker.value = "#cfcfcf";
       });
 
       // this.colorCircles.forEach((element) => {
