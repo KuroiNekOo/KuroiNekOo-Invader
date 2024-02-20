@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
     rotate: 0,
     pixels: undefined,
     color: undefined,
+    tempColor: undefined,
 
     generateForm: function () {
       const formHTML = document.querySelector(".configuration");
@@ -214,9 +215,15 @@ document.addEventListener("DOMContentLoaded", function () {
       this.resetButton.addEventListener("click", this.resetColors);
 
       this.gum.addEventListener("click", function (event) {
+        if (app.color != "#cfcfcf") {
+          app.tempColor = app.color;
+        }
         event.target.classList.toggle("gomme-selected");
-        app.color = "#cfcfcf";
-        colorPicker.value = "#cfcfcf";
+        if (event.target.classList[0] === "gomme-selected") {
+          app.color = "#cfcfcf";
+        } else {
+          app.color = app.tempColor;
+        }
       });
 
       // this.colorCircles.forEach((element) => {
