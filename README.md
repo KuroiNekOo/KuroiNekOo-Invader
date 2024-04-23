@@ -4,7 +4,7 @@
 
 ## En ligne
 
-<a href="https://kuroinekoo.github.io/KuroiNekOo-oNews/"><strong>Invader</strong></a>
+<a href="https://kuroinekoo.github.io/KuroiNekOo-Invader/"><strong>Invader</strong></a>
 
 ## Présentation
 
@@ -44,4 +44,4 @@ cd nomDuDepot && code .
 
 Maintenant que vous êtes sur VSCode, créez un serveur web local depuis LiveServer qui est une extension VSCode afin d'accéder au site.
 
-Vous pouvez tout aussi bien visiter le rendu visuel depuis <a href="https://kuroinekoo.github.io/KuroiNekOo-oNews/"><strong>Invader</strong></a>.
+Vous pouvez tout aussi bien visiter le rendu visuel depuis <a href="https://kuroinekoo.github.io/KuroiNekOo-Invader/"><strong>Invader</strong></a>.
